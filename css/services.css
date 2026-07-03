@@ -1,0 +1,40 @@
+/* Services Page Styles */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--gradient-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:32px 24px;text-align:center;transition:all var(--transition);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-primary);opacity:0;transition:opacity var(--transition)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(13,148,136,0.15);border-color:rgba(13,148,136,0.3)}
+.service-card:hover::before{opacity:1}
+.service-card .svc-icon{font-size:3rem;margin-bottom:16px}
+.service-card h3{font-size:1.2rem;margin-bottom:10px}
+.service-card p{font-size:0.9rem;margin-bottom:14px}
+.service-card .svc-price{color:var(--primary);font-weight:600;font-size:0.95rem;margin-bottom:14px}
+.service-card .svc-features{text-align:left;margin-bottom:18px}
+.service-card .svc-features li{padding:4px 0;font-size:0.85rem;color:var(--text-secondary)}
+.service-card .svc-features li::before{content:'✓ ';color:var(--success);font-weight:700}
+
+/* Process Timeline */
+.process-timeline{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;padding:20px 0}
+.process-step{text-align:center;flex:0 0 auto;padding:20px 16px;position:relative}
+.process-number{width:32px;height:32px;border-radius:50%;background:var(--gradient-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;margin:0 auto 10px}
+.process-icon{font-size:2rem;margin-bottom:8px}
+.process-step h4{font-size:0.95rem;margin-bottom:4px}
+.process-step p{font-size:0.8rem;color:var(--text-muted)}
+.process-line{width:40px;height:2px;background:var(--border-glass);flex-shrink:0}
+
+/* Brands Grid */
+.brands-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.brand-card{text-align:center;padding:24px}
+.brand-name{font-family:var(--font-heading);font-size:1.3rem;font-weight:700;color:var(--text-primary);margin-bottom:8px;letter-spacing:2px}
+
+/* FAQ */
+.faq-container{max-width:700px;margin:0 auto}
+.faq-item{border:1px solid var(--border-glass);border-radius:var(--radius-sm);margin-bottom:10px;overflow:hidden}
+.faq-question{width:100%;padding:16px 20px;background:var(--bg-glass);border:none;color:var(--text-primary);font-size:0.95rem;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all var(--transition);font-family:var(--font-body)}
+.faq-question:hover{background:rgba(13,148,136,0.1)}
+.faq-icon{font-size:1.3rem;transition:transform var(--transition);color:var(--primary)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
+.faq-answer p{padding:0 20px 16px;font-size:0.9rem;line-height:1.7}
+.faq-item.active .faq-answer{max-height:200px}
+.faq-item.active .faq-icon{transform:rotate(45deg)}
+
+@media(max-width:768px){.services-grid{grid-template-columns:1fr}.process-timeline{flex-direction:column}.process-line{width:2px;height:20px}.brands-grid{grid-template-columns:repeat(2,1fr)}}

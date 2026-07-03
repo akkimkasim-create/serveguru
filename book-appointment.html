@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Service Appointment | Bharat Trading Corporation</title>
+    <meta name="description" content="Book a sewing machine service appointment online. Expert repair and maintenance in Coimbatore.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23FF6B35' rx='15' width='100' height='100'/%3E%3Ctext x='50' y='68' text-anchor='middle' fill='white' font-size='48' font-weight='bold' font-family='sans-serif'%3EBTC%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+    <nav id="main-nav"></nav>
+    <section class="page-header"><div class="container"><h1>Book <span class="gradient-text">Appointment</span></h1><div class="breadcrumb"><a href="index.html">Home</a><span class="separator">›</span><span class="current">Book Appointment</span></div></div></section>
+
+    <section class="section" style="padding-top:40px">
+        <div class="container">
+            <div class="booking-layout">
+                <div class="booking-main">
+                    <!-- Progress Bar -->
+                    <div class="progress-bar">
+                        <div class="progress-step active" data-step="1"><div class="step-circle">1</div><span>Service</span></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="2"><div class="step-circle">2</div><span>Date</span></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="3"><div class="step-circle">3</div><span>Time</span></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="4"><div class="step-circle">4</div><span>Details</span></div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="5"><div class="step-circle">5</div><span>Confirm</span></div>
+                    </div>
+
+                    <!-- Step 1: Service Type -->
+                    <div class="booking-step active" id="step1">
+                        <h2>Select Service Type</h2>
+                        <p class="step-desc">What kind of service do you need?</p>
+                        <div class="service-type-grid">
+                            <label class="service-type-card"><input type="radio" name="serviceType" value="Repair"><div class="stc-inner"><span class="stc-icon">🔧</span><h4>Repair & Fix</h4><p>Machine not working? We'll fix it!</p></div></label>
+                            <label class="service-type-card"><input type="radio" name="serviceType" value="Maintenance"><div class="stc-inner"><span class="stc-icon">🛡️</span><h4>Maintenance</h4><p>Regular service for smooth running</p></div></label>
+                            <label class="service-type-card"><input type="radio" name="serviceType" value="Installation"><div class="stc-inner"><span class="stc-icon">🔌</span><h4>Installation</h4><p>New machine setup & configuration</p></div></label>
+                            <label class="service-type-card"><input type="radio" name="serviceType" value="Consultation"><div class="stc-inner"><span class="stc-icon">🎓</span><h4>Consultation</h4><p>Need help choosing the right machine?</p></div></label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Date -->
+                    <div class="booking-step" id="step2">
+                        <h2>Select Date</h2>
+                        <p class="step-desc">Pick a convenient date for your appointment</p>
+                        <div class="sunday-notice">⚠️ We are closed on Sundays</div>
+                        <div class="calendar-widget">
+                            <div class="cal-header">
+                                <button class="cal-nav" onclick="changeMonth(-1)">‹</button>
+                                <h3 id="calMonthYear"></h3>
+                                <button class="cal-nav" onclick="changeMonth(1)">›</button>
+                            </div>
+                            <div class="cal-days-header">
+                                <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                            </div>
+                            <div class="cal-grid" id="calGrid"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Time Slot -->
+                    <div class="booking-step" id="step3">
+                        <h2>Select Time Slot</h2>
+                        <p class="step-desc">Choose an available time slot</p>
+                        <div class="time-slots-grid" id="timeSlotsGrid"></div>
+                    </div>
+
+                    <!-- Step 4: Details -->
+                    <div class="booking-step" id="step4">
+                        <h2>Your Details</h2>
+                        <p class="step-desc">Please provide your contact information</p>
+                        <div class="booking-form">
+                            <div class="form-row">
+                                <div class="form-group"><label>Full Name *</label><input type="text" class="form-control" id="bkName" placeholder="Enter your full name"></div>
+                                <div class="form-group"><label>Phone Number *</label><input type="tel" class="form-control" id="bkPhone" placeholder="10-digit mobile number" maxlength="10"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label>Email (Optional)</label><input type="email" class="form-control" id="bkEmail" placeholder="your@email.com"></div>
+                                <div class="form-group"><label>Machine Brand</label><select class="form-control" id="bkBrand"><option value="">Select Brand</option><option>Singer</option><option>Usha</option><option>Jack</option><option>Juki</option><option>Brother</option><option>Siruba</option><option>Other</option></select></div>
+                            </div>
+                            <div class="form-group"><label>Machine Model</label><input type="text" class="form-control" id="bkModel" placeholder="e.g., Singer M3505"></div>
+                            <div class="form-group"><label>Describe the Issue</label><textarea class="form-control" id="bkIssue" placeholder="Tell us about the problem you're facing..." rows="4"></textarea></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Confirmation -->
+                    <div class="booking-step" id="step5">
+                        <div class="confirmation-screen">
+                            <div class="confirm-checkmark">✓</div>
+                            <h2>Appointment Confirmed!</h2>
+                            <p>Your booking reference: <strong id="confirmRef"></strong></p>
+                            <div class="confirm-summary glass-card" id="confirmSummary"></div>
+                            <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+                                <button class="btn btn-primary" onclick="resetBooking()">📅 Book Another</button>
+                                <a href="index.html" class="btn btn-secondary">🏠 Back to Home</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="booking-nav" id="bookingNav">
+                        <button class="btn btn-secondary" id="prevBtn" onclick="prevStep()" style="display:none">← Previous</button>
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+
+                <!-- Sidebar Info -->
+                <aside class="booking-sidebar glass-card">
+                    <h4>📋 Booking Info</h4>
+                    <div class="sidebar-info"><span>🕐</span><div><strong>Working Hours</strong><br>Mon-Sat: 9AM–6PM</div></div>
+                    <div class="sidebar-info"><span>📅</span><div><strong>Sunday</strong><br>Closed</div></div>
+                    <div class="sidebar-info"><span>📞</span><div><strong>Phone</strong><br><a href="tel:+918778799127">+91-8778799127</a></div></div>
+                    <div class="sidebar-info"><span>📧</span><div><strong>Email</strong><br><a href="mailto:btc.kovai@gmail.com">btc.kovai@gmail.com</a></div></div>
+                    <div class="sidebar-info"><span>📍</span><div><strong>Location</strong><br>Singanallur, Coimbatore</div></div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <footer id="main-footer"></footer>
+    <script src="js/app.js"></script>
+    <script src="js/data-seed.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

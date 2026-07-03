@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Bharat Trading Corporation</title>
+    <meta name="description" content="Contact Bharat Trading Corporation — Singanallur, Coimbatore. Call +91-8778799127 or email btc.kovai@gmail.com">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23FF6B35' rx='15' width='100' height='100'/%3E%3Ctext x='50' y='68' text-anchor='middle' fill='white' font-size='48' font-weight='bold' font-family='sans-serif'%3EBTC%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <nav id="main-nav"></nav>
+    <section class="page-header"><div class="container"><h1>Contact <span class="gradient-text">Us</span></h1><div class="breadcrumb"><a href="index.html">Home</a><span class="separator">›</span><span class="current">Contact</span></div></div></section>
+
+    <section class="section" style="padding-top:40px"><div class="container">
+        <div class="contact-layout">
+            <!-- Form -->
+            <div class="contact-form glass-card" data-animate="slide-right">
+                <h3>Send Us a Message</h3>
+                <p style="margin-bottom:24px;font-size:0.9rem">Have a question? We'd love to hear from you.</p>
+                <form id="contactForm" onsubmit="submitContact(event)">
+                    <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                        <div class="form-group"><label>Name *</label><input type="text" class="form-control" id="cName" placeholder="Your name" required></div>
+                        <div class="form-group"><label>Phone *</label><input type="tel" class="form-control" id="cPhone" placeholder="Mobile number" required></div>
+                    </div>
+                    <div class="form-group"><label>Email</label><input type="email" class="form-control" id="cEmail" placeholder="your@email.com"></div>
+                    <div class="form-group"><label>Subject</label>
+                        <select class="form-control" id="cSubject">
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Product Inquiry">Product Inquiry</option>
+                            <option value="Service Request">Service Request</option>
+                            <option value="Complaint">Complaint</option>
+                            <option value="Feedback">Feedback</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Message *</label><textarea class="form-control" id="cMessage" placeholder="Tell us what you need..." rows="5" required></textarea></div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">📨 Send Message</button>
+                </form>
+            </div>
+
+            <!-- Info -->
+            <div class="contact-info" data-animate="slide-left">
+                <div class="info-card glass-card">
+                    <span class="info-icon">📞</span>
+                    <div><h4>Phone</h4><a href="tel:+918778799127">+91-8778799127</a></div>
+                </div>
+                <div class="info-card glass-card">
+                    <span class="info-icon">📧</span>
+                    <div><h4>Email</h4><a href="mailto:btc.kovai@gmail.com">btc.kovai@gmail.com</a></div>
+                </div>
+                <div class="info-card glass-card">
+                    <span class="info-icon">📍</span>
+                    <div><h4>Address</h4><p>Singanallur, Coimbatore<br>Tamil Nadu 641005</p></div>
+                </div>
+                <div class="info-card glass-card">
+                    <span class="info-icon">🕐</span>
+                    <div><h4>Working Hours</h4><p>Mon-Sat: 9:00 AM – 6:00 PM<br><span style="color:var(--danger)">Sunday: Closed</span></p></div>
+                </div>
+            </div>
+        </div>
+    </div></section>
+
+    <!-- Map -->
+    <section class="map-section">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.8!2d76.97!3d10.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSinganallur%2C%20Coimbatore!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="400" style="border:0;filter:invert(90%) hue-rotate(180deg);opacity:0.9" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="section" style="padding:60px 0"><div class="container">
+        <div class="grid-3">
+            <a href="tel:+918778799127" class="action-card glass-card" data-animate="fade-up">
+                <span class="action-icon">📞</span><h4>Call Now</h4><p>Speak to us directly</p>
+            </a>
+            <a href="https://wa.me/918778799127?text=Hi%2C%20I%20need%20help%20with%20sewing%20machines" target="_blank" class="action-card glass-card" data-animate="fade-up">
+                <span class="action-icon">💬</span><h4>WhatsApp</h4><p>Chat with us instantly</p>
+            </a>
+            <a href="mailto:btc.kovai@gmail.com" class="action-card glass-card" data-animate="fade-up">
+                <span class="action-icon">📧</span><h4>Email Us</h4><p>We reply within 24 hours</p>
+            </a>
+        </div>
+    </div></section>
+
+    <footer id="main-footer"></footer>
+    <script src="js/app.js"></script>
+    <script src="js/data-seed.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

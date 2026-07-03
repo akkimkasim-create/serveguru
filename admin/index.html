@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | ServeGuru Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-page">
+    <aside id="admin-sidebar"></aside>
+    <main class="admin-main">
+        <header id="admin-header"></header>
+        <div class="admin-content">
+            <div class="welcome-banner"><h2>Welcome back, Admin! 👋</h2><p id="dashDate"></p></div>
+            <div class="stats-cards" id="statsCards"></div>
+            <div class="admin-table-wrapper">
+                <div class="admin-table-header"><h3>Recent Appointments</h3></div>
+                <table class="admin-table"><thead><tr><th>ID</th><th>Customer</th><th>Date</th><th>Time</th><th>Service</th><th>Status</th></tr></thead><tbody id="recentAppointments"></tbody></table>
+            </div>
+            <div class="quick-actions">
+                <a href="admin-products.html" class="quick-action"><span class="qa-icon">📦</span><div><h4>Manage Products</h4><p>Add, edit, or remove products</p></div></a>
+                <a href="admin-appointments.html" class="quick-action"><span class="qa-icon">📅</span><div><h4>View Appointments</h4><p>Manage all bookings</p></div></a>
+                <a href="admin-pages.html" class="quick-action"><span class="qa-icon">📄</span><div><h4>Edit Pages</h4><p>Update website content</p></div></a>
+            </div>
+        </div>
+    </main>
+    <script src="../js/app.js"></script>
+    <script src="../js/data-seed.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        renderAdminHeader('📊 Dashboard');
+        document.getElementById('dashDate').textContent = new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+        const stats = getAdminStats();
+        document.getElementById('statsCards').innerHTML = `
+            <div class="stat-card"><div class="sc-icon">📦</div><div class="sc-number">${stats.totalProducts}</div><div class="sc-label">Total Products</div></div>
+            <div class="stat-card"><div class="sc-icon">📅</div><div class="sc-number">${stats.totalAppointments}</div><div class="sc-label">Total Appointments</div></div>
+            <div class="stat-card"><div class="sc-icon">📌</div><div class="sc-number">${stats.todayAppointments}</div><div class="sc-label">Today's Appointments</div></div>
+            <div class="stat-card"><div class="sc-icon">✅</div><div class="sc-number">${stats.pending}</div><div class="sc-label">Confirmed Bookings</div></div>`;
+        const appointments = JSON.parse(localStorage.getItem('btc_appointments')||'[]').slice(-10).reverse();
+        const tbody = document.getElementById('recentAppointments');
+        if(appointments.length===0){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--text-muted)">No appointments yet</td></tr>';return;}
+        tbody.innerHTML = appointments.map(a=>`<tr><td>${a.id.substring(0,12).toUpperCase()}</td><td>${a.customerName}</td><td>${a.date}</td><td>${a.slot}</td><td>${a.serviceType}</td><td><span class="status-${a.status.toLowerCase()}">${a.status}</span></td></tr>`).join('');
+    });
+    </script>
+</body>
+</html>

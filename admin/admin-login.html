@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | ServeGuru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-login-page">
+    <div class="login-card">
+        <div class="login-logo">SG</div>
+        <h2>ServeGuru Admin</h2>
+        <p class="login-subtitle">Sign in to manage your website</p>
+        <div class="login-error" id="loginError">Invalid username or password</div>
+        <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <div class="input-icon-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input type="text" class="form-control" id="loginUser" placeholder="Username" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-icon-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" class="form-control" id="loginPass" placeholder="Password" required>
+                    <button type="button" class="toggle-password" onclick="togglePass()">👁</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:8px">Login →</button>
+        </form>
+        <p style="margin-top:20px;font-size:0.8rem;color:var(--text-muted)">© 2026 Bharat Trading Corporation</p>
+    </div>
+
+    <script>
+    // Check if already logged in
+    (function() {
+        const session = JSON.parse(localStorage.getItem('btc_admin_session') || 'null');
+        if (session && session.loggedIn) window.location.href = 'index.html';
+    })();
+
+    function handleLogin(e) {
+        e.preventDefault();
+        const user = document.getElementById('loginUser').value.trim();
+        const pass = document.getElementById('loginPass').value;
+        if (user === 'admin' && pass === 'admin123') {
+            localStorage.setItem('btc_admin_session', JSON.stringify({ loggedIn: true, loginTime: Date.now() }));
+            window.location.href = 'index.html';
+        } else {
+            const err = document.getElementById('loginError');
+            err.classList.add('show');
+            setTimeout(() => err.classList.remove('show'), 3000);
+        }
+    }
+
+    function togglePass() {
+        const inp = document.getElementById('loginPass');
+        inp.type = inp.type === 'password' ? 'text' : 'password';
+    }
+    </script>
+</body>
+</html>

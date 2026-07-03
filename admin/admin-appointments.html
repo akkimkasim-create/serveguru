@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments | BTC Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-page">
+    <aside id="admin-sidebar"></aside>
+    <main class="admin-main">
+        <header id="admin-header"></header>
+        <div class="admin-content">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+                <h2 style="font-size:1.3rem">Appointments</h2>
+                <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+                    <select class="form-control" id="statusFilter" onchange="filterAppointments()" style="width:auto;padding:8px 30px 8px 12px">
+                        <option value="all">All Status</option>
+                        <option value="Confirmed">Confirmed</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                    <input type="date" class="form-control" id="dateFilter" onchange="filterAppointments()" style="width:auto">
+                </div>
+            </div>
+            <div class="admin-table-wrapper">
+                <table class="admin-table"><thead><tr><th>ID</th><th>Customer</th><th>Phone</th><th>Date</th><th>Time</th><th>Service</th><th>Status</th><th>Actions</th></tr></thead><tbody id="appointmentsBody"></tbody></table>
+            </div>
+        </div>
+    </main>
+    <!-- Details Modal -->
+    <div class="modal-overlay" id="aptDetailModal">
+        <div class="modal"><div class="modal-header"><h3>Appointment Details</h3><button class="modal-close" onclick="closeAdminModal('aptDetailModal')">×</button></div><div class="modal-body" id="aptDetailContent"></div></div>
+    </div>
+    <script src="../js/app.js"></script>
+    <script src="../js/data-seed.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/admin-appointments.js"></script>
+</body>
+</html>

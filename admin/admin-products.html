@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | BTC Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-page">
+    <aside id="admin-sidebar"></aside>
+    <main class="admin-main">
+        <header id="admin-header"></header>
+        <div class="admin-content">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+                <div class="admin-search"><input type="text" class="form-control" id="prodSearch" placeholder="Search products..." oninput="filterAdminProducts()"></div>
+                <button class="btn btn-primary" onclick="openProductModal()">+ Add Product</button>
+            </div>
+            <div class="admin-table-wrapper">
+                <table class="admin-table"><thead><tr><th>Name</th><th>Brand</th><th>Category</th><th>Price</th><th>Stock</th><th>Featured</th><th>Actions</th></tr></thead><tbody id="productsTableBody"></tbody></table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal" style="max-width:650px">
+            <div class="modal-header"><h3 id="prodModalTitle">Add Product</h3><button class="modal-close" onclick="closeAdminModal('productModal')">×</button></div>
+            <div class="modal-body">
+                <input type="hidden" id="prodEditId">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                    <div class="form-group"><label>Name *</label><input class="form-control" id="prodName"></div>
+                    <div class="form-group"><label>Brand *</label><select class="form-control" id="prodBrand"><option value="">Select</option><option>Singer</option><option>Usha</option><option>Jack</option><option>Juki</option><option>Brother</option><option>Siruba</option><option>Merritt</option><option>Ranew</option><option>Revo</option></select></div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+                    <div class="form-group"><label>Category</label><select class="form-control" id="prodCategory"><option>Domestic</option><option>Industrial</option></select></div>
+                    <div class="form-group"><label>Price *</label><input type="number" class="form-control" id="prodPrice"></div>
+                    <div class="form-group"><label>Original Price</label><input type="number" class="form-control" id="prodOrigPrice"></div>
+                </div>
+                <div class="form-group"><label>Description</label><textarea class="form-control" id="prodDesc" rows="3"></textarea></div>
+                <div class="form-group"><label>Features (comma-separated)</label><input class="form-control" id="prodFeatures" placeholder="Feature 1, Feature 2, Feature 3"></div>
+                <div style="display:flex;gap:20px;margin-top:8px">
+                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9rem"><input type="checkbox" id="prodFeatured" style="accent-color:var(--primary)"> Featured</label>
+                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9rem"><input type="checkbox" id="prodInStock" checked style="accent-color:var(--success)"> In Stock</label>
+                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:0.9rem"><input type="checkbox" id="prodIsNew" style="accent-color:var(--warning)"> New</label>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-secondary" onclick="closeAdminModal('productModal')">Cancel</button><button class="btn btn-primary" onclick="saveProduct()">Save Product</button></div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/data-seed.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/admin-products.js"></script>
+</body>
+</html>
